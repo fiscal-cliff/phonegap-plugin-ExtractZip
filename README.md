@@ -5,17 +5,18 @@ Now it supports android. We going to add iOS support as soon as possible.
 
 there are two methods:
 
-# extract(fileName, destination)
-# getTempDir(name)
+* extract(fileName, destination)
+* getTempDir(name)
 
 Installing
 ======
 You may use phonegap CLI as follows:
 
-phonegap local plugin add https://github.com/fiscal-cliff/phonegap-plugin-ExtractZip.git
-zsh: correct 'plugin' to 'plugins' [nyae]? n
+<pre>
+➜ phonegap local plugin add https://github.com/fiscal-cliff/phonegap-plugin-ExtractZip.git
 [phonegap] adding the plugin: https://github.com/fiscal-cliff/phonegap-plugin-ExtractZip.git
 [phonegap] successfully added the plugin
+</pre>
 
 Using
 ====
@@ -32,7 +33,7 @@ Using
       }
       function win(status) 
       { 
-	  alert('Message: '+status);
+	      alert('Message: '+status);
       } 
       function fail(error) 
       { 
