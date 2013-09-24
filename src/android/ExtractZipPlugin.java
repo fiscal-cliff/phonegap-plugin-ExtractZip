@@ -16,12 +16,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.apache.cordova.*;
 
+import android.content.Context;
+
 /**
  * @author Evgeniy Lukovsky
  *
  */
 public class ExtractZipPlugin extends CordovaPlugin {
-	
+	public enum Action{
+		extract, getTempDir
+	}
+
 	/**
 	 * @param in
 	 * @param out
@@ -43,10 +48,14 @@ public class ExtractZipPlugin extends CordovaPlugin {
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 		System.out.println("ZIP plugin has been started");
-		if(action.equals("extract")){
-			return extractAll(args, callbackContext);
+		boolean result = false;
+
+		switch(Action.valueOf(action)){
+		case extract: result = extractAll(args, callbackContext);
+		break;
+		case getTempDir: result = getTempDir(args, callbackContext);
 		}
-		return false;
+		return result;
 	}
 
 	/**
@@ -113,6 +122,22 @@ public class ExtractZipPlugin extends CordovaPlugin {
 			return false;
 		}
 		System.out.println("All went fine.");
+		callbackContext.success("Succesfully extracted.");
+		return true;
+	}
+
+	private boolean getTempDir(JSONArray args,CallbackContext callbackContext){
+		String dirName;
+		try {
+			dirName = args.getString(0);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+			return false;
+		}
+		Context appContext = cordova.getActivity().getApplicationContext();
+		String absolutePath = appContext.getDir(dirName, Context.MODE_PRIVATE).getAbsolutePath();
+		callbackContext.success(absolutePath);
 		return true;
 	}
 
