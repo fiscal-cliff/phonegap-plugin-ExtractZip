@@ -6,7 +6,7 @@
 //
 
 #import "ExtractZip.h"
-#import "SSZipArchive/SSZipArchive.h"
+#import "SSZipArchive.h"
 
 @implementation ExtractZip
 
