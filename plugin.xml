@@ -34,7 +34,7 @@
          
 	<framework src="libz.dylib" />
 
-         <header-file src="src/ios/ExtractZip.h" target-dir=/>
+         <header-file src="src/ios/ExtractZip.h" />
          <source-file src="src/ios/ExtractZip.m" />
 	 <header-file src="src/ios/SSZipArchive/SSZipArchive.h" />
 	 <source-file src="src/ios/SSZipArchive/SSZipArchive.m" />
