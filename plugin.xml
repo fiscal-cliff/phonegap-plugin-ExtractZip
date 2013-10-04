@@ -28,15 +28,31 @@
      <platform name="ios">    
          <config-file target="config.xml" parent="/*">
              <feature name="ExtractZip">
-                 <param name="ios-package" value="ExtractZIp" />
+                 <param name="ios-package" value="ExtractZip" />
              </feature>
          </config-file>
          
-         <header-file src="src/ios/CDVCamera.h" />
-         <source-file src="src/ios/CDVCamera.m" />
-         <header-file src="src/ios/CDVJpegHeaderWriter.h" />
- 	     <source-file src="src/ios/CDVJpegHeaderWriter.m" />
- 	     <header-file src="src/ios/CDVExif.h" />
+	<framework src="libz.dylib" />
+
+         <header-file src="src/ios/ExtractZip.h" />
+         <source-file src="src/ios/ExtractZip.m" />
+	 <header-file src="src/ios/SSZipArchive.h" />
+	 <source-file src="src/ios/SSZipArchive.m" />
+         <header-file src="src/ios/SSZipArchive/minizip/crypt.h" />
+	 <source-file src="src/ios/SSZipArchive/minizip/ioapi.c" />
+         <header-file src="src/ios/SSZipArchive/minizip/ioapi.h" />
+	 <source-file src="src/ios/SSZipArchive/minizip/mztools.c" />
+         <header-file src="src/ios/SSZipArchive/minizip/mztools.h" />
+	 <source-file src="src/ios/SSZipArchive/minizip/unzip.c" />
+         <header-file src="src/ios/SSZipArchive/minizip/unzip.h" />
+	 <source-file src="src/ios/SSZipArchive/minizip/zip.c" />
+         <header-file src="src/ios/SSZipArchive/minizip/zip.h" />
+
+	<info>
+	This plugin requires libz.dylib that is available in the iOS SDK.
+	If you will face a linker errors, you need to add the library manually.
+	</info>
+
      </platform>
           
 </plugin> 
