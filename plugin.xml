@@ -36,8 +36,8 @@
 
          <header-file src="src/ios/ExtractZip.h" />
          <source-file src="src/ios/ExtractZip.m" />
-	 <header-file src="src/ios/SSZipArchive.h" />
-	 <source-file src="src/ios/SSZipArchive.m" />
+	 <header-file src="src/ios/SSZipArchive/SSZipArchive.h" />
+	 <source-file src="src/ios/SSZipArchive/SSZipArchive.m" />
          <header-file src="src/ios/SSZipArchive/minizip/crypt.h" />
 	 <source-file src="src/ios/SSZipArchive/minizip/ioapi.c" />
          <header-file src="src/ios/SSZipArchive/minizip/ioapi.h" />
