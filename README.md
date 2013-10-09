@@ -21,22 +21,21 @@ You may use phonegap CLI as follows:
 Using
 ====
 ```javascript
-      function extractFile(fileName)
-      {
-	      var zip = new ExtractZip();
-	      zip.extract('/sdcard/'+fileName,'/sdcard/',win,fail,'ExtractZipFilePlugin');
-      }
-      function getTempDir(dirName)
-      {
-	      var zip = new ExtractZip();
-	      zip.getTempDir(dirName,win,fail,'ExtractZipFilePlugin');
-      }
-      function win(status) 
-      { 
-	      alert('Message: '+status);
-      } 
-      function fail(error) 
-      { 
-	      alert(error);
-      }
+		document.addEventListener('deviceready', onDeviceReady);
+		function onDeviceReady() {
+			document.body.style.background = 'red'
+			window.zip = cordova.require("cordova/plugin/ExtractZip");
+		}
+		function extractZip(fileName) {
+			zip.extract(fileName, '/sdcard/', win, fail);
+		}
+		function getTempDir(dirName) {
+			zip.getTempDir(dirName, win, fail);
+		}
+		function win(status) {
+			alert('Message: ' + status);
+		}
+		function fail(status) {
+			alert('Error: ' + status);
+		}
 ```
