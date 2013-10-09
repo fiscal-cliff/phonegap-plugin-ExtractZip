@@ -24,7 +24,7 @@ Using
 		document.addEventListener('deviceready', onDeviceReady);
 		function onDeviceReady() {
 			document.body.style.background = 'red'
-			window.zip = cordova.require('cordova/plugin/ExtractZip.ExtractZip');
+			window.zip = cordova.require('cordova.plugin.ExtractZip.ExtractZip');
 		}
 		function extractZip(fileName) {
 			zip.extract(fileName, '/sdcard/', win, fail);
