@@ -51,9 +51,11 @@ public class ExtractZipPlugin extends CordovaPlugin {
 		boolean result = false;
 
 		switch(Action.valueOf(action)){
-		case extract: result = extractAll(args, callbackContext);
+		case extract: result = true;
+			extractAll(args, callbackContext);
 		break;
-		case getTempDir: result = getTempDir(args, callbackContext);
+		case getTempDir: result = true;
+			getTempDir(args, callbackContext);
 		}
 		return result;
 	}
