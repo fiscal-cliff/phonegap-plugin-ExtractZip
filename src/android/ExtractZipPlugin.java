@@ -86,6 +86,7 @@ public class ExtractZipPlugin extends CordovaPlugin {
 						continue;
 					} 
 					try{ 
+						outFile.getAbsoluteFile().getParentFile().mkdirs();
 						is = zipFile.getInputStream(entry);
 						os =new BufferedOutputStream(new FileOutputStream(outFile.getAbsolutePath()));
 						copyInputStream(is, os);
