@@ -94,6 +94,7 @@ public class ExtractZipPlugin extends CordovaPlugin {
 					catch(IOException e2){
 						System.out.println("Can't write file.");
 						System.out.println(e2.getMessage());
+						callbackContext.error("Can not write a file");
 						return false;
 					}finally{
 						if(is!=null){
@@ -108,20 +109,24 @@ public class ExtractZipPlugin extends CordovaPlugin {
 			} catch (ZipException e1) {
 				System.out.println("ZIP exception");
 				System.out.println(e1.getMessage());
+				callbackContext.error("ZIP Exception.");
 				return false;
 			} catch (IOException e1) {
 				System.out.println("IO exception");
 				System.out.println(e1.getMessage());
+				callbackContext.error("IO Exception");
 				return false;
 			}
 
 		} catch (JSONException e) {
 			System.out.println("JSON exception");
+			callbackContext.error("JSON exception");
 			System.out.println(e.getMessage());
 			return false;
 		} catch (IOException e3) {
 			System.out.println("IO/ZIP exception");
 			System.out.println(e3.getMessage());
+			callbackContext.error("IO/ZIP Exception");
 			return false;
 		}
 		System.out.println("All went fine.");
@@ -136,6 +141,7 @@ public class ExtractZipPlugin extends CordovaPlugin {
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
+			callbackContext.error(e.getMessage());
 			return false;
 		}
 		Context appContext = cordova.getActivity().getApplicationContext();
