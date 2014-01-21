@@ -50,13 +50,27 @@ public class ExtractZipPlugin extends CordovaPlugin {
 		System.out.println("ZIP plugin has been started");
 		boolean result = false;
 
-		switch(Action.valueOf(action)){
-		case extract: result = true;
-			extractAll(args, callbackContext);
-		break;
-		case getTempDir: result = true;
-			getTempDir(args, callbackContext);
+		final String _action = action;
+		final JSONArray _args = args;
+		final CallbackContext _callbackContext = callbackContext;
+
+		if( Action.valueOf(action) == Action.extract ||
+			Action.valueOf(action) == Action.getTempDir )
+		{
+			result = true;
 		}
+
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+        		switch(Action.valueOf(_action)){
+        		case extract:
+        			extractAll(_args, _callbackContext);
+        		break;
+        		case getTempDir:
+        			getTempDir(_args, _callbackContext);
+        		}
+            }
+        });
 		return result;
 	}
 
