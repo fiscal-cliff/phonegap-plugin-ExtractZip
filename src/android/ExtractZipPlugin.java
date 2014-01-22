@@ -51,12 +51,23 @@ public class ExtractZipPlugin extends CordovaPlugin {
 		boolean result = false;
 
 		switch(Action.valueOf(action)){
-		case extract: result = true;
-			extractAll(args, callbackContext);
+		case extract:
+			result = true;
+			// run "extractAll" threaded to support big files (e.g. > 100MByte)
+			final JSONArray _args = args;
+			final CallbackContext _callbackContext = callbackContext;
+			cordova.getThreadPool().execute(new Runnable() {
+				public void run() {
+					extractAll(_args, _callbackContext);
+	            }
+	        });
 		break;
-		case getTempDir: result = true;
+		case getTempDir:
+			result = true;
 			getTempDir(args, callbackContext);
 		}
+        		
+		
 		return result;
 	}
 
