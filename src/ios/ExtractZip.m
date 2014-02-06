@@ -41,7 +41,7 @@
     NSString* dirPath = [path stringByAppendingPathComponent:dirName];
     
     NSLog(@"Trying to create directory: %@",dirName);
-    bool isCreated = [[NSFileManager defaultManager] createDirectoryAtPath:dirPath withIntermediateDirectories:NO attributes:nil error: &error];
+    bool isCreated = [[NSFileManager defaultManager] createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error: &error];
     
     if (isCreated) {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:dirPath];
